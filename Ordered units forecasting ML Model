@@ -7,7 +7,7 @@ from sklearn.preprocessing import MinMaxScaler
 import datetime
 
 # Load the data
-file_path = r'C:\Users\kossures\Documents\temp_junk\Ordered_units_at_the_1732456777821.csv'  # Replace with your file path
+file_path = r'C:\Users\kossures\Documents\temp_junk\Ordered_units_at_the_1732456777821.csv'  # file path or add historical data tables
 data = pd.read_csv(file_path)
 
 # Preprocess the data
@@ -24,7 +24,7 @@ grouped_data['normalized_units'] = scaler.fit_transform(grouped_data[['ordered_u
 # Create a dictionary to store features per grain
 features_per_grain = {}
 
-# Prepare features and labels for each grain
+# Prepare feature and labels for each grain
 look_back = 30  # Look-back period
 for grain, group in grouped_data.groupby(['pl_new', 'gl_name']):
     grain_key = f"{grain[0]}_{grain[1]}"
